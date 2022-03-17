@@ -45,8 +45,6 @@ sudo rabbitmqctl add_vhost webHost
 sudo rabbitmqctl set_permissions -p webHost stonx_admin ".*" ".*" ".*"
 sudo rabbitmqctl add_vhost dmzHost
 sudo rabbitmqctl set_permissions -p dmzHost stonx_admin ".*" ".*" ".*"
-sudo rabbitmqctl add_vhost dbHost
-sudo rabbitmqctl set_permissions -p dbHost stonx_admin ".*" ".*" ".*"
 sudo rabbitmqctl add_vhost logHost
 sudo rabbitmqctl set_permissions -p logHost stonx_admin ".*" ".*" ".*"
 
