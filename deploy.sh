@@ -35,13 +35,27 @@ sudo rabbitmqctl set_permissions -p / stonx_admin ".*" ".*" ".*"
 sudo rabbitmqctl delete_user guest
 
 # Add vhosts
-sudo rabbitmqctl add_vhost webserver
-sudo rabbitmqctl set_permissions -p webserver stonx_admin ".*" ".*" ".*"
+sudo rabbitmqctl add_vhost webserverHost
+sudo rabbitmqctl set_permissions -p webserverHost stonx_admin ".*" ".*" ".*"
+sudo rabbitmqctl add_vhost dmzHost
+sudo rabbitmqctl set_permissions -p dmzHost stonx_admin ".*" ".*" ".*"
+sudo rabbitmqctl add_vhost dbHost
+sudo rabbitmqctl set_permissions -p dbHost stonx_admin ".*" ".*" ".*"
+sudo rabbitmqctl add_vhost logHost
+sudo rabbitmqctl set_permissions -p logHost stonx_admin ".*" ".*" ".*"
 
 # Add db user
 sudo rabbitmqctl add_user db stonx_mariadb
-sudo rabbitmqctl set_permissions -p webserver db ".*" ".*" ".*"
+sudo rabbitmqctl set_permissions -p dbHost db ".*" ".*" ".*"
 
 # Add webserver user
 sudo rabbitmqctl add_user webserver stonx_websrv
-sudo rabbitmqctl set_permissions -p webserver webserver ".*" ".*" ".*"
+sudo rabbitmqctl set_permissions -p webserverHost webserver ".*" ".*" ".*"
+
+# Add dmz user
+sudo rabbitmqctl add_user dmz stonx_dmz
+sudo rabbitmqctl set_permissions -p dmzHost dmz ".*" ".*" ".*"
+
+# Add logging user
+sudo rabbitmqctl add_user log stonx_log
+sudo rabbitmqctl set_permissions -p logHost log ".*" ".*" ".*"
