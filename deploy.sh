@@ -65,3 +65,6 @@ sudo rabbitmqctl set_permissions -p dmzHost dmz ".*" ".*" ".*"
 # Add logging user
 sudo rabbitmqctl add_user log stonx_log
 sudo rabbitmqctl set_permissions -p logHost log ".*" ".*" ".*"
+
+# Declare Queue
+sudo rabbitmqadmin -u stonx_admin -p $rmq_admin_password declare queue --vhost=webHost name=login durable=true
