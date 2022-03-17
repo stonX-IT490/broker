@@ -29,6 +29,9 @@ curl -s https://install.zerotier.com | sudo bash
 # Enable rabbitmq management plugin
 sudo rabbitmq-plugins enable rabbitmq_management
 
+# Install rabbitmqadmin
+wget http://127.0.0.1:15672/cli/rabbitmqadmin
+
 # Add admin user
 sudo rabbitmqctl add_user stonx_admin $rmq_admin_password
 sudo rabbitmqctl set_user_tags stonx_admin administrator
@@ -62,5 +65,3 @@ sudo rabbitmqctl set_permissions -p dmzHost dmz ".*" ".*" ".*"
 # Add logging user
 sudo rabbitmqctl add_user log stonx_log
 sudo rabbitmqctl set_permissions -p logHost log ".*" ".*" ".*"
-
-
