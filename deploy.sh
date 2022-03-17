@@ -2,6 +2,7 @@
 
 # Ask user for RabbitMQ Admin Password
 read -s -p "Set password for stonx_admin RabbitMQ user: " rmq_admin_password
+echo -e '\n'
 
 # Update repos
 sudo apt update
@@ -45,20 +46,25 @@ sudo rabbitmqctl add_vhost webHost
 sudo rabbitmqctl set_permissions -p webHost stonx_admin ".*" ".*" ".*"
 sudo rabbitmqctl add_vhost dmzHost
 sudo rabbitmqctl set_permissions -p dmzHost stonx_admin ".*" ".*" ".*"
+sudo rabbitmqctl add_vhost webDmzHost
+sudo rabbitmqctl set_permissions -p webDmzHost stonx_admin ".*" ".*" ".*"
 sudo rabbitmqctl add_vhost logHost
 sudo rabbitmqctl set_permissions -p logHost stonx_admin ".*" ".*" ".*"
 
 # Add db user
 sudo rabbitmqctl add_user db stonx_mariadb
-sudo rabbitmqctl set_permissions -p dbHost db ".*" ".*" ".*"
+sudo rabbitmqctl set_permissions -p webHost db ".*" ".*" ".*"
+sudo rabbitmqctl set_permissions -p dmzHost db ".*" ".*" ".*"
 
 # Add webserver user
 sudo rabbitmqctl add_user webserver stonx_websrv
 sudo rabbitmqctl set_permissions -p webHost webserver ".*" ".*" ".*"
+sudo rabbitmqctl set_permissions -p webDmzHost webserver ".*" ".*" ".*"
 
 # Add dmz user
 sudo rabbitmqctl add_user dmz stonx_dmz
 sudo rabbitmqctl set_permissions -p dmzHost dmz ".*" ".*" ".*"
+sudo rabbitmqctl set_permissions -p webDmzHost dmz ".*" ".*" ".*"
 
 # Add logging user
 sudo rabbitmqctl add_user log stonx_log
