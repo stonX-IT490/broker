@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Ask user for RabbitMQ Admin Password
+read -s -p "Set password for stonx_admin RabbitMQ user: " rmq_admin_password
+
 # Update repos
 sudo apt update
 
@@ -27,7 +30,7 @@ curl -s https://install.zerotier.com | sudo bash
 sudo rabbitmq-plugins enable rabbitmq_management
 
 # Add admin user
-sudo rabbitmqctl add_user stonx_admin 7Fa6QR33Rcpc99HR
+sudo rabbitmqctl add_user stonx_admin $rmq_admin_password
 sudo rabbitmqctl set_user_tags stonx_admin administrator
 sudo rabbitmqctl set_permissions -p / stonx_admin ".*" ".*" ".*"
 
