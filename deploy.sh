@@ -16,6 +16,11 @@ sudo apt autoremove -y --purge
 # Install required packages
 sudo apt install -y ufw rabbitmq-server
 
+# Install Composer
+sudo apt install wget php-cli php-zip unzip
+sudo wget -O composer-setup.php https://getcomposer.org/installer
+sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+
 # Setup firewall
 sudo ufw --force enable
 sudo ufw allow ssh
