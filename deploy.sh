@@ -15,6 +15,7 @@ sudo apt autoremove -y --purge
 
 # Install required packages
 sudo apt install -y ufw rabbitmq-server
+sudo apt-get install php-curl
 
 # Install Composer
 sudo apt install wget php-cli php-zip unzip
