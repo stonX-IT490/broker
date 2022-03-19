@@ -20,8 +20,7 @@ sudo apt install -y ufw rabbitmq-server
 sudo apt install wget php-cli php-zip unzip
 sudo wget -O composer-setup.php https://getcomposer.org/installer
 sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
-mkdir broker && cd ~/broker/ && composer require php-amqplib/php-amqplib 
-cd ~/ && rm -f composer-setup.php
+composer require php-amqplib/php-amqplib
 
 # Setup firewall
 sudo ufw --force enable
