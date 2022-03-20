@@ -14,14 +14,13 @@ sudo apt full-upgrade -y
 sudo apt autoremove -y --purge
 
 # Install required packages
-sudo apt install -y ufw rabbitmq-server
-sudo apt-get install php-curl
+sudo apt install -y ufw rabbitmq-server wget unzip php-bcmath php-amqp php-curl php-cli php-zip php-mbstring
 
 # Install Composer
-sudo apt install wget php-cli php-zip unzip
 sudo wget -O composer-setup.php https://getcomposer.org/installer
 sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 composer require php-amqplib/php-amqplib
+composer update
 
 # Setup firewall
 sudo ufw --force enable
