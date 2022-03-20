@@ -14,7 +14,7 @@ sudo apt full-upgrade -y
 sudo apt autoremove -y --purge
 
 # Install required packages
-sudo apt install -y ufw rabbitmq-server wget unzip php-bcmath php-amqp php-curl php-cli php-zip php-mbstring
+sudo apt install -y ufw rabbitmq-server wget unzip php-bcmath php-amqp php-curl php-cli php-zip php-mbstring entr
 
 # Install Composer
 sudo wget -O composer-setup.php https://getcomposer.org/installer
