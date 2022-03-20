@@ -78,3 +78,5 @@ sudo rabbitmqctl set_permissions -p logHost log ".*" ".*" ".*"
 
 # Declare Queue
 sudo rabbitmqadmin -u stonx_admin -p $rmq_admin_password declare queue --vhost=webHost name=login durable=true
+sudo rabbitmqadmin -u stonx_admin -p $rmq_admin_password declare queue --vhost=webHost name=profile durable=true
+sudo rabbitmqadmin -u stonx_admin -p $rmq_admin_password declare queue --vhost=webHost name=checkEmail durable=true
