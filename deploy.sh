@@ -5,7 +5,7 @@ read -s -p "Set password for stonx_admin RabbitMQ user: " rmq_admin_password
 echo -e '\n'
 
 # Update repos
-sudo apt update
+sudo -i apt update
 
 # Do full upgrade of system
 sudo apt full-upgrade -y
