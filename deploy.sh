@@ -16,12 +16,6 @@ sudo apt autoremove -y --purge
 # Install required packages
 sudo apt install -y ufw rabbitmq-server wget unzip php-bcmath php-amqp php-curl php-cli php-zip php-mbstring inotify-tools
 
-# Install Composer
-sudo wget -O composer-setup.php https://getcomposer.org/installer
-sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
-composer require php-amqplib/php-amqplib
-composer update
-
 # Setup firewall
 sudo ufw --force enable
 sudo ufw allow ssh
@@ -80,3 +74,10 @@ sudo rabbitmqctl set_permissions -p logHost log ".*" ".*" ".*"
 sudo rabbitmqadmin -u stonx_admin -p $rmq_admin_password declare queue --vhost=webHost name=webserver durable=true
 sudo rabbitmqadmin -u stonx_admin -p $rmq_admin_password declare queue --vhost=dmzHost name=dmz durable=true
 sudo rabbitmqadmin -u stonx_admin -p $rmq_admin_password declare queue --vhost=webDmzHost name=news durable=true
+
+# Setup Central Logging
+git clone https://github.com/stonX-IT490/logging.git ~/logging
+cd ~/logging
+chmod +x deploy.sh
+./deploy.sh
+cd ~/
