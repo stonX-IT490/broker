@@ -48,6 +48,8 @@ sudo rabbitmqctl add_vhost dmzHost
 sudo rabbitmqctl set_permissions -p dmzHost stonx_admin ".*" ".*" ".*"
 sudo rabbitmqctl add_vhost webDmzHost
 sudo rabbitmqctl set_permissions -p webDmzHost stonx_admin ".*" ".*" ".*"
+sudo rabbitmqctl add_vhost pushHost
+sudo rabbitmqctl set_permissions -p pushHost stonx_admin ".*" ".*" ".*"
 sudo rabbitmqctl add_vhost logHost
 sudo rabbitmqctl set_permissions -p logHost stonx_admin ".*" ".*" ".*"
 
@@ -55,6 +57,7 @@ sudo rabbitmqctl set_permissions -p logHost stonx_admin ".*" ".*" ".*"
 sudo rabbitmqctl add_user db stonx_mariadb
 sudo rabbitmqctl set_permissions -p webHost db ".*" ".*" ".*"
 sudo rabbitmqctl set_permissions -p dmzHost db ".*" ".*" ".*"
+sudo rabbitmqctl set_permissions -p pushHost db ".*" ".*" ".*"
 
 # Add webserver user
 sudo rabbitmqctl add_user webserver stonx_websrv
@@ -65,6 +68,7 @@ sudo rabbitmqctl set_permissions -p webDmzHost webserver ".*" ".*" ".*"
 sudo rabbitmqctl add_user dmz stonx_dmz
 sudo rabbitmqctl set_permissions -p dmzHost dmz ".*" ".*" ".*"
 sudo rabbitmqctl set_permissions -p webDmzHost dmz ".*" ".*" ".*"
+sudo rabbitmqctl set_permissions -p pushHost dmz ".*" ".*" ".*"
 
 # Add logging user
 sudo rabbitmqctl add_user log stonx_log
@@ -73,7 +77,7 @@ sudo rabbitmqctl set_permissions -p logHost log ".*" ".*" ".*"
 # Declare Queue
 sudo rabbitmqadmin -u stonx_admin -p $rmq_admin_password declare queue --vhost=webHost name=webserver durable=true
 sudo rabbitmqadmin -u stonx_admin -p $rmq_admin_password declare queue --vhost=dmzHost name=dmz durable=true
-sudo rabbitmqadmin -u stonx_admin -p $rmq_admin_password declare queue --vhost=dmzHost name=push durable=true
+sudo rabbitmqadmin -u stonx_admin -p $rmq_admin_password declare queue --vhost=pushHost name=push durable=true
 sudo rabbitmqadmin -u stonx_admin -p $rmq_admin_password declare queue --vhost=webDmzHost name=news durable=true
 
 # Setup Central Logging
