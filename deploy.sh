@@ -81,7 +81,7 @@ sudo rabbitmqadmin -u stonx_admin -p $rmq_admin_password declare queue --vhost=p
 sudo rabbitmqadmin -u stonx_admin -p $rmq_admin_password declare queue --vhost=webDmzHost name=news durable=true
 
 # Setup Central Logging
-git clone https://github.com/stonX-IT490/logging.git ~/logging
+git clone git@github.com:stonX-IT490/logging.git ~/logging
 cd ~/logging
 chmod +x deploy.sh
 ./deploy.sh
