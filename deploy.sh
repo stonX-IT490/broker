@@ -74,11 +74,11 @@ sudo rabbitmqctl set_permissions -p pushHost dmz ".*" ".*" ".*"
 sudo rabbitmqctl add_user log stonx_log
 sudo rabbitmqctl set_permissions -p logHost log ".*" ".*" ".*"
 
-# Declare Queue
-sudo rabbitmqadmin -u stonx_admin -p $rmq_admin_password declare queue --vhost=webHost name=webserver durable=true
-sudo rabbitmqadmin -u stonx_admin -p $rmq_admin_password declare queue --vhost=dmzHost name=dmz durable=true
-sudo rabbitmqadmin -u stonx_admin -p $rmq_admin_password declare queue --vhost=pushHost name=push durable=true
-sudo rabbitmqadmin -u stonx_admin -p $rmq_admin_password declare queue --vhost=webDmzHost name=news durable=true
+# Declare Queue # deprecated with new rabbitMQLib
+# sudo rabbitmqadmin -u stonx_admin -p $rmq_admin_password declare queue --vhost=webHost name=webserver durable=true
+# sudo rabbitmqadmin -u stonx_admin -p $rmq_admin_password declare queue --vhost=dmzHost name=dmz durable=true
+# sudo rabbitmqadmin -u stonx_admin -p $rmq_admin_password declare queue --vhost=pushHost name=push durable=true
+# sudo rabbitmqadmin -u stonx_admin -p $rmq_admin_password declare queue --vhost=webDmzHost name=news durable=true
 
 # Setup Central Logging
 git clone git@github.com:stonX-IT490/logging.git ~/logging
