@@ -34,6 +34,9 @@ sudo rabbitmq-plugins enable rabbitmq_management
 wget http://127.0.0.1:15672/cli/rabbitmqadmin
 
 # Add admin user
+sudo rabbitmqctl stop_app
+sudo rabbitmqctl reset
+sudo rabbitmqctl start_app
 sudo rabbitmqctl add_user stonx_admin $rmq_admin_password
 sudo rabbitmqctl set_user_tags stonx_admin administrator
 sudo rabbitmqctl set_permissions -p / stonx_admin ".*" ".*" ".*"
@@ -83,6 +86,7 @@ sudo rabbitmqctl set_permissions -p logHost log ".*" ".*" ".*"
 # Setup Central Logging
 git clone git@github.com:stonX-IT490/logging.git ~/logging
 cd ~/logging
+git pull
 chmod +x deploy.sh
 ./deploy.sh
 cd ~/
